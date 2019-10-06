@@ -9,6 +9,21 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: "user",
+      children: [
+        {
+          path: "user/login",
+          name: "login",
+          component: () => import(/* webpackChunkName: "user" */ "./views/User/Login.vue")
+        },
+        {
+          path: "user/register",
+          name: "register",
+          component: () => import(/* webpackChunkName: "register" */ "./views/User/Register.vue")
+        }
+      ]
+    },
+    {
       path: "/",
       name: "home",
       component: Home
